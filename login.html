@@ -25,355 +25,223 @@
     <input type="hidden" id="chap-id" value="$(chap-id)">
     <input type="hidden" id="chap-challenge" value="$(chap-challenge)">
 
-    <div class="product-shell" id="top">
-        <header class="saas-nav" aria-label="Navigation principale">
-            <a class="brand" href="./login.html" aria-label="RICO'S WIFI ZONE">
-                <span class="brand-mark">
+    <!-- ========= LAYOUT PRINCIPAL ========= -->
+    <div class="rw-shell">
+
+        <!-- ===== SIDEBAR GAUCHE : LOGIN ===== -->
+        <aside class="rw-sidebar">
+            <div class="rw-logo">
+                <span class="rw-logo-mark">
                     <img src="assets/shield.svg" alt="">
                 </span>
-                <span>
+                <div>
                     <strong>RICO'S WIFI ZONE</strong>
-                    <small>Hotspot premium</small>
-                </span>
-            </a>
-
-            <nav class="nav-links" aria-label="Sections du portail">
-                <a href="#hero">Accueil</a>
-                <a href="#plans">Tarifs</a>
-                <a href="#why">Pourquoi nous</a>
-            </nav>
-
-            <a class="nav-contact" href="#login-panel">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-                    <path d="M10 17l5-5-5-5"></path>
-                    <path d="M15 12H3"></path>
-                </svg>
-                Se connecter
-            </a>
-        </header>
-
-        <main>
-            <section class="screen-section hero-screen" id="hero" aria-label="Slideshow principal">
-                <aside class="ad-showcase hero-showcase" aria-label="Slideshow des offres locales">
-                    <div class="promo-slider" data-slider>
-                        <article class="promo-slide promo-slide-premium is-active" aria-hidden="false">
-                            <p class="eyebrow">Laptop business</p>
-                            <h2>Laptop Pro 14</h2>
-                            <p>Un poste mobile fiable pour les cours, le bureau et les rendez-vous client.</p>
-                            <div class="promo-offer">
-                                <span>285 000 FCFA</span>
-                                <small>Disponible en boutique</small>
-                            </div>
-                            <a class="promo-link" href="tel:+2250141965069">Demander une offre</a>
-                            <figure class="promo-media">
-                                <img src="assets/ads/laptop-premium.jpg" alt="Ordinateur portable ouvert sur un bureau" width="480" height="380" loading="eager">
-                            </figure>
-                        </article>
-
-                        <article class="promo-slide promo-slide-wifi" aria-hidden="true">
-                            <p class="eyebrow">Pack bureau</p>
-                            <h2>Station de travail complete</h2>
-                            <p>Un ensemble pret pour accueil, cyber, comptabilite ou back-office.</p>
-                            <div class="promo-offer">
-                                <span>390 000 FCFA</span>
-                                <small>Installation accompagnee</small>
-                            </div>
-                            <a class="promo-link" href="tel:+2250141965069">Voir l'offre</a>
-                            <figure class="promo-media">
-                                <img src="assets/ads/desktop-gaming.jpg" alt="Ordinateur de bureau avec ecran et clavier" width="480" height="380" loading="lazy">
-                            </figure>
-                        </article>
-
-                        <article class="promo-slide promo-slide-support" aria-hidden="true">
-                            <p class="eyebrow">Solution impression</p>
-                            <h2>Imprimante Wi-Fi multifonction</h2>
-                            <p>Une imprimante fiable pour documents administratifs, factures et travaux de bureau.</p>
-                            <div class="promo-offer">
-                                <span>95 000 FCFA</span>
-                                <small>Service bureau</small>
-                            </div>
-                            <a class="promo-link" href="tel:+2250141965069">Contacter</a>
-                            <figure class="promo-media">
-                                <img src="assets/ads/printer-office.jpg" alt="Imprimante de bureau" width="480" height="380" loading="lazy">
-                            </figure>
-                        </article>
-
-                        <article class="promo-slide promo-slide-wifi" aria-hidden="true">
-                            <p class="eyebrow">Reseau pro</p>
-                            <h2>Routeur Wi-Fi haute portee</h2>
-                            <p>Une base stable pour maison, commerce, bureau et zone d'accueil.</p>
-                            <div class="promo-offer">
-                                <span>65 000 FCFA</span>
-                                <small>Conseil inclus</small>
-                            </div>
-                            <a class="promo-link" href="tel:+2250141965069">Etre conseille</a>
-                            <figure class="promo-media">
-                                <img src="assets/ads/router-network.jpg" alt="Equipement reseau et routeur" width="480" height="380" loading="lazy">
-                            </figure>
-                        </article>
-
-                        <article class="promo-slide promo-slide-sponsor" aria-hidden="true">
-                            <p class="eyebrow">Poste equipe</p>
-                            <h2>Kit poste de travail</h2>
-                            <p>Un ensemble sobre pour finaliser un poste propre, confortable et durable.</p>
-                            <div class="promo-offer">
-                                <span>120 000 FCFA</span>
-                                <small>Pack professionnel</small>
-                            </div>
-                            <a class="promo-link" href="tel:+2250141965069">Consulter l'offre</a>
-                            <figure class="promo-media">
-                                <img src="assets/ads/monitor-keyboard.jpg" alt="Kit ecran clavier et souris" width="480" height="380" loading="lazy">
-                            </figure>
-                        </article>
-                    </div>
-
-                    <div class="promo-toolbar" aria-label="Controle des offres">
-                        <button class="icon-button" type="button" data-slide-prev aria-label="Offre precedente">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="m15 18-6-6 6-6"></path>
-                            </svg>
-                        </button>
-                        <div class="slide-dots" aria-hidden="true">
-                            <span class="is-active"></span>
-                        </div>
-                        <button class="icon-button" type="button" data-slide-next aria-label="Offre suivante">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="m9 6 6 6-6 6"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </aside>
-
-            </section>
-
-            <section class="screen-section plan-rail" id="plans" aria-labelledby="pricing-title">
-                <div class="screen-heading">
-                    <p class="eyebrow">Acces Wi-Fi</p>
-                    <h2 id="pricing-title">Des pass clairs, rapides a choisir.</h2>
-                    <p>Chaque offre affiche sa duree et son prix sans detour, avec une connexion immediate apres validation.</p>
+                    <small>Hotspot Premium</small>
                 </div>
-
-                <div class="plan-track" aria-label="Liste des tarifs">
-                    <article class="plan-item">
-                        <span class="plan-kicker">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M8 2v4M16 2v4M3 10h18"></path>
-                                <path d="M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"></path>
-                            </svg>
-                            Pass 72 h
-                        </span>
-                        <strong>500 FCFA</strong>
-                        <small>Acces 3 jours</small>
-                    </article>
-                    <article class="plan-item">
-                        <span class="plan-kicker">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M8 2v4M16 2v4M3 10h18"></path>
-                                <path d="M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"></path>
-                            </svg>
-                            Pass 7 jours
-                        </span>
-                        <strong>1 000 FCFA</strong>
-                        <small>Acces semaine</small>
-                    </article>
-                    <article class="plan-item">
-                        <span class="plan-kicker">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M8 2v4M16 2v4M3 10h18"></path>
-                                <path d="M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"></path>
-                            </svg>
-                            Pass 14 jours
-                        </span>
-                        <strong>1 500 FCFA</strong>
-                        <small>Acces prolonge</small>
-                    </article>
-                    <article class="plan-item">
-                        <span class="plan-kicker">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M8 2v4M16 2v4M3 10h18"></path>
-                                <path d="M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"></path>
-                            </svg>
-                            Pass 21 jours
-                        </span>
-                        <strong>2 500 FCFA</strong>
-                        <small>Acces confort</small>
-                    </article>
-                    <article class="plan-item is-featured">
-                        <b>Recommande</b>
-                        <span class="plan-kicker">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M8 2v4M16 2v4M3 10h18"></path>
-                                <path d="M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"></path>
-                            </svg>
-                            Pass mensuel
-                        </span>
-                        <strong>3 000 FCFA</strong>
-                        <small>Acces 30 jours</small>
-                    </article>
-                </div>
-
-                <div class="pricing-action">
-                    <a class="hero-action is-primary" href="#login-panel">Activer un pass</a>
-                    <a class="hero-action" href="tel:0141965069">Assistance</a>
-                </div>
-            </section>
-
-            <section class="screen-section explain-grid" id="why" aria-labelledby="why-title">
-                <div class="screen-heading">
-                    <p class="eyebrow">Experience portail</p>
-                    <h2 id="why-title">Un parcours simple, rassurant et premium.</h2>
-                    <p>Connexion, offres locales, assistance et securite restent visibles sans alourdir l'ecran.</p>
-                </div>
-
-                <div class="explain-cards">
-                    <article>
-                        <span class="metric-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5V9a3 3 0 0 0 0 6v1.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16.5V15a3 3 0 0 0 0-6V7.5Z"></path>
-                                <path d="M10 8v8M14 8v8"></path>
-                            </svg>
-                        </span>
-                        <h3>Acces instantane</h3>
-                        <p>Le pass ouvre la session en quelques secondes, avec un mode membre disponible pour les abonnes.</p>
-                    </article>
-                    <article>
-                        <span class="metric-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
-                                <path d="m9 12 2 2 4-5"></path>
-                            </svg>
-                        </span>
-                        <h3>Connexion protegee</h3>
-                        <p>Le portail garde une authentification controlee et limite les ressources aux fichiers autorises.</p>
-                    </article>
-                    <article>
-                        <span class="metric-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M3 11v2a2 2 0 0 0 2 2h2l5 4V5l-5 4H5a2 2 0 0 0-2 2Z"></path>
-                                <path d="M16 9a4 4 0 0 1 0 6"></path>
-                                <path d="M19 6a8 8 0 0 1 0 12"></path>
-                            </svg>
-                        </span>
-                        <h3>Vitrine locale</h3>
-                        <p>Les offres partenaires restent integrees au slideshow du portail, sans tracker externe.</p>
-                    </article>
-                    <article>
-                        <span class="metric-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M18 11a6 6 0 0 0-12 0v3"></path>
-                                <path d="M5 14H4a2 2 0 0 0 0 4h1v-4Z"></path>
-                                <path d="M19 14h1a2 2 0 0 1 0 4h-1v-4Z"></path>
-                                <path d="M16 20c-1.1.7-2.4 1-4 1"></path>
-                            </svg>
-                        </span>
-                        <h3>Assistance directe</h3>
-                        <p>Les actions de contact restent disponibles au bon moment pour orienter rapidement le client.</p>
-                    </article>
-                </div>
-            </section>
-        </main>
-
-        <footer class="portal-footer">
-            <span>RICO'S WIFI ZONE - Hotspot premium</span>
-            <nav aria-label="Liens utiles">
-                <a href="./terms.html">Conditions</a>
-                <a href="./privacy.html">Confidentialite</a>
-                <a href="tel:0141965069">Assistance</a>
-            </nav>
-        </footer>
-    </div>
-
-    <aside class="login-panel" id="login-panel" aria-labelledby="login-title">
-        <a class="panel-backdrop" href="#top" aria-label="Fermer le panneau de connexion"></a>
-        <div class="access-dock" role="dialog" aria-modal="true">
-            <a class="panel-close" href="#top" aria-label="Fermer">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M18 6 6 18"></path>
-                    <path d="m6 6 12 12"></path>
-                </svg>
-            </a>
-
-            <div class="dock-header">
-                <p class="eyebrow">Connexion securisee</p>
-                <h2 id="login-title">Accedez a votre Wi-Fi</h2>
-                <p>Entrez votre pass ou connectez-vous avec votre compte membre.</p>
             </div>
 
-            <div class="mode-tabs" role="group" aria-label="Choisir le mode de connexion">
-                <button class="mode-tab is-active" type="button" id="btn-voucher" data-login-mode="voucher" aria-pressed="true">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5V9a3 3 0 0 0 0 6v1.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16.5V15a3 3 0 0 0 0-6V7.5Z"></path>
-                        <path d="M10 8v8M14 8v8"></path>
-                    </svg>
-                    Pass
-                </button>
-                <button class="mode-tab" type="button" id="btn-member" data-login-mode="member" aria-pressed="false">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
-                        <path d="M4.5 20a7.5 7.5 0 0 1 15 0"></path>
-                    </svg>
-                    Membre
-                </button>
+            <!-- Tabs Voucher / Connexion / QR Code -->
+            <div class="rw-tabs" role="group" aria-label="Mode de connexion">
+                <button class="rw-tab is-active" type="button" data-login-mode="voucher" id="btn-voucher" aria-pressed="true">Voucher</button>
+                <button class="rw-tab" type="button" data-login-mode="member" id="btn-member" aria-pressed="false">Connexion</button>
+                <button class="rw-tab" type="button" id="btn-qr" aria-pressed="false">QR Code</button>
             </div>
 
-            <div class="login-note" id="infologin" role="status">
-                Entrez votre <strong>code du pass</strong> pour vous connecter.
-            </div>
-
-            <form class="login-form" name="login" autocomplete="off" action="$(link-login-only)" method="post">
+            <!-- Formulaire de connexion -->
+            <form class="rw-form login-form" name="login" autocomplete="off" action="$(link-login-only)" method="post">
                 <input type="hidden" name="dst" value="$(link-orig)">
                 <input type="hidden" name="popup" value="true">
 
-                <label class="field-group" for="username">
-                    <span class="field-label" id="username-label">Code du pass</span>
-                    <span class="field-shell">
-                        <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5V9a3 3 0 0 0 0 6v1.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16.5V15a3 3 0 0 0 0-6V7.5Z"></path>
-                            <path d="M10 8v8M14 8v8"></path>
-                        </svg>
-                        <input id="username" type="text" name="username" class="username-input" placeholder="Code du pass" value="" required>
-                    </span>
+                <label class="rw-field" for="username">
+                    <span class="rw-field-label" id="username-label">Username</span>
+                    <input id="username" type="text" name="username" class="username-input rw-input" placeholder="Username" value="" required>
                 </label>
 
-                <label class="field-group is-hidden" id="password-wrapper" for="password">
-                    <span class="field-label">Mot de passe</span>
-                    <span class="field-shell">
-                        <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M7 11V8a5 5 0 0 1 10 0v3"></path>
-                            <path d="M6.5 11h11A1.5 1.5 0 0 1 19 12.5v6A1.5 1.5 0 0 1 17.5 20h-11A1.5 1.5 0 0 1 5 18.5v-6A1.5 1.5 0 0 1 6.5 11Z"></path>
-                        </svg>
-                        <input id="password" name="password" placeholder="Votre mot de passe" class="password-input" type="hidden">
-                        <button class="password-toggle" type="button" data-password-toggle aria-label="Afficher le mot de passe" hidden>
-                            <svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
-                                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
-                            </svg>
-                            <svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="m3 3 18 18"></path>
-                                <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path>
-                                <path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a14.7 14.7 0 0 1-3 3.9"></path>
-                                <path d="M6.5 6.5C3.6 8.2 2 12 2 12s3.5 7 10 7c1.4 0 2.7-.3 3.8-.8"></path>
-                            </svg>
+                <label class="rw-field" id="password-wrapper" for="password">
+                    <span class="rw-field-label">Password</span>
+                    <span class="rw-input-wrap">
+                        <input id="password" name="password" placeholder="Password" class="password-input rw-input" type="hidden">
+                        <button class="rw-eye-btn" type="button" data-password-toggle aria-label="Afficher" hidden>
+                            <svg class="eye-open" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg class="eye-closed" viewBox="0 0 24 24"><path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a14.7 14.7 0 0 1-3 3.9M6.5 6.5C3.6 8.2 2 12 2 12s3.5 7 10 7c1.4 0 2.7-.3 3.8-.8"/></svg>
                         </button>
                     </span>
                 </label>
 
-                <button class="btn-primary" type="submit">
-                    Se connecter
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M5 12h14"></path>
-                        <path d="m13 6 6 6-6 6"></path>
-                    </svg>
-                </button>
+                <div class="rw-login-note" id="infologin" role="status">
+                    Entrez votre <strong>code du pass</strong> pour vous connecter.
+                </div>
+
+                <button class="rw-btn-connect" type="submit">Se Connecter</button>
             </form>
 
-            <div class="dock-footer">
-                <a href="tel:0141965069">Assistance directe</a>
-                <span>Connexion protegee</span>
+            <!-- Actions secondaires -->
+            <div class="rw-sidebar-actions">
+                <a class="rw-link-action rw-link-ticket" href="#">Cliquer ici pour obtenir un Ticket</a>
+                <a class="rw-link-action rw-link-recover" href="#">Recuperer mes Identifiants</a>
             </div>
-        </div>
-    </aside>
-</body>
 
+            <!-- Contact -->
+            <div class="rw-contact-block">
+                <p class="rw-contact-title">Contactez nous :</p>
+                <p class="rw-contact-line">Tel : <a href="tel:+2250141965069">+225 01 41 96 50 69</a></p>
+                <a class="rw-whatsapp-btn" href="https://wa.me/2250141965069" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.868-1.424A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 0 1-4.078-1.125L4 20l1.125-3.922A7.946 7.946 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+                    WhatsApp
+                </a>
+            </div>
+
+            <!-- Footer sidebar -->
+            <nav class="rw-sidebar-footer" aria-label="Liens legaux">
+                <a href="./terms.html">Conditions</a>
+                <a href="./privacy.html">Confidentialite</a>
+            </nav>
+        </aside>
+
+        <!-- ===== CONTENU PRINCIPAL DROITE ===== -->
+        <main class="rw-main">
+
+            <!-- Ticker bienvenue -->
+            <div class="rw-ticker-bar">
+                <span class="rw-ticker-icon">&#128293;</span>
+                <div class="rw-ticker-track">
+                    <span class="rw-ticker-text">Bienvenue cher utilisateur &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; RICO'S WIFI ZONE &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Connexion rapide et securisee &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Bienvenue cher utilisateur</span>
+                </div>
+            </div>
+
+            <!-- Zone video / banniere -->
+            <div class="rw-hero-block">
+                <div class="rw-hero-title">
+                    <span class="rw-hero-icon">&#128640;</span>
+                    <span>Le Meilleur des reseaux Internet</span>
+                </div>
+                <div class="rw-video-area" id="rw-video-area">
+                    <div class="rw-video-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+                        <span>Aucune video disponible</span>
+                    </div>
+                    <div class="rw-video-bar">
+                        <button class="rw-vid-btn" type="button" aria-label="Lecture">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        </button>
+                        <span class="rw-vid-time">0:00</span>
+                        <div class="rw-vid-progress"><div class="rw-vid-cursor"></div></div>
+                        <button class="rw-vid-btn" type="button" aria-label="Volume">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        </button>
+                        <button class="rw-vid-btn" type="button" aria-label="Plein ecran">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <a class="rw-ticket-cta" href="#">Recuperer Mon Ticket</a>
+            </div>
+
+            <!-- Separator forfaits -->
+            <div class="rw-plans-header">
+                <span>"Nos Forfaits (Cliquer pour Souscrire)"</span>
+            </div>
+
+            <!-- Grille des forfaits -->
+            <div class="rw-plans-grid" id="plans">
+                <article class="rw-plan-card" data-theme="blue">
+                    <h3 class="rw-plan-name">6 GB</h3>
+                    <div class="rw-plan-wifi">
+                        <div class="rw-wifi-anim">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="rw-plan-price">
+                        <span class="rw-plan-amount">500</span>
+                        <sup class="rw-plan-currency">Fcfa</sup>
+                    </div>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-validity">Valides 7 Jours</p>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-users">2 Utilisateurs</p>
+                    <button class="rw-plan-btn" type="button" onclick="window.voucher && window.voucher()">PAYER</button>
+                </article>
+
+                <article class="rw-plan-card" data-theme="blue">
+                    <h3 class="rw-plan-name">Jour Illimitees</h3>
+                    <div class="rw-plan-wifi">
+                        <div class="rw-wifi-anim">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="rw-plan-price">
+                        <span class="rw-plan-amount">500</span>
+                        <sup class="rw-plan-currency">Fcfa</sup>
+                    </div>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-validity">Valides 1 Jour</p>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-users">1 Utilisateurs</p>
+                    <button class="rw-plan-btn" type="button" onclick="window.voucher && window.voucher()">PAYER</button>
+                </article>
+
+                <article class="rw-plan-card" data-theme="dark">
+                    <h3 class="rw-plan-name">Semaine Illimitees</h3>
+                    <div class="rw-plan-wifi">
+                        <div class="rw-wifi-anim">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="rw-plan-price">
+                        <span class="rw-plan-amount">2.000</span>
+                        <sup class="rw-plan-currency">Fcfa</sup>
+                    </div>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-validity">Valides 7 Jours</p>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-users">1 Utilisateurs</p>
+                    <button class="rw-plan-btn" type="button" onclick="window.voucher && window.voucher()">PAYER</button>
+                </article>
+
+                <article class="rw-plan-card" data-theme="dark">
+                    <h3 class="rw-plan-name">Mois Illimite</h3>
+                    <div class="rw-plan-wifi">
+                        <div class="rw-wifi-anim">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="rw-plan-price">
+                        <span class="rw-plan-amount">5.000</span>
+                        <sup class="rw-plan-currency">Fcfa</sup>
+                    </div>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-validity">Valides 30 Jours</p>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-users">1 Utilisateurs</p>
+                    <button class="rw-plan-btn" type="button" onclick="window.voucher && window.voucher()">PAYER</button>
+                </article>
+            </div>
+
+            <!-- Cliquer ici pour plus de forfaits -->
+            <div class="rw-more-plans">
+                <a href="#plans">"Cliquez ici Pour plus de Forfaits"</a>
+            </div>
+
+            <!-- Nos services -->
+            <div class="rw-services-block">
+                <h4 class="rw-services-title">Nos services</h4>
+                <ul class="rw-services-list">
+                    <li>Installation Internet a Domicile</li>
+                    <li>Prestation de Services Informatiques</li>
+                    <li>Cablage Reseau</li>
+                </ul>
+            </div>
+
+            <!-- Footer -->
+            <footer class="rw-footer">
+                <span>Copyright &copy; 2023 RICO'S WIFI ZONE</span>
+                <nav>
+                    <a href="./terms.html">Conditions</a>
+                    <a href="./privacy.html">Confidentialite</a>
+                    <a href="tel:0141965069">Assistance</a>
+                </nav>
+            </footer>
+        </main>
+    </div>
+</body>
 </html>
