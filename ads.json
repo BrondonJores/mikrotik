@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "updatedAt": "2026-05-17",
+  "ads": [
+    {
+      "active": true,
+      "theme": "premium",
+      "eyebrow": "Laptop business",
+      "title": "Laptop Pro 14",
+      "description": "Un poste mobile fiable pour les cours, le bureau et les rendez-vous client.",
+      "price": "285 000 FCFA",
+      "meta": "Disponible en boutique",
+      "cta": "Demander une offre",
+      "href": "tel:+2250141965069",
+      "image": "assets/ads/laptop-premium.jpg",
+      "imageAlt": "Ordinateur portable ouvert sur un bureau"
+    },
+    {
+      "active": true,
+      "theme": "wifi",
+      "eyebrow": "Pack bureau",
+      "title": "Station de travail complete",
+      "description": "Un ensemble pret pour accueil, cyber, comptabilite ou back-office.",
+      "price": "390 000 FCFA",
+      "meta": "Installation accompagnee",
+      "cta": "Voir l'offre",
+      "href": "tel:+2250141965069",
+      "image": "assets/ads/desktop-gaming.jpg",
+      "imageAlt": "Ordinateur de bureau avec ecran et clavier"
+    },
+    {
+      "active": true,
+      "theme": "support",
+      "eyebrow": "Solution impression",
+      "title": "Imprimante Wi-Fi multifonction",
+      "description": "Une imprimante fiable pour documents administratifs, factures et travaux de bureau.",
+      "price": "95 000 FCFA",
+      "meta": "Service bureau",
+      "cta": "Contacter",
+      "href": "tel:+2250141965069",
+      "image": "assets/ads/printer-office.jpg",
+      "imageAlt": "Imprimante de bureau"
+    },
+    {
+      "active": true,
+      "theme": "wifi",
+      "eyebrow": "Reseau pro",
+      "title": "Routeur Wi-Fi haute portee",
+      "description": "Une base stable pour maison, commerce, bureau et zone d'accueil.",
+      "price": "65 000 FCFA",
+      "meta": "Conseil inclus",
+      "cta": "Etre conseille",
+      "href": "tel:+2250141965069",
+      "image": "assets/ads/router-network.jpg",
+      "imageAlt": "Equipement reseau et routeur"
+    },
+    {
+      "active": true,
+      "theme": "sponsor",
+      "eyebrow": "Poste equipe",
+      "title": "Kit poste de travail",
+      "description": "Un ensemble sobre pour finaliser un poste propre, confortable et durable.",
+      "price": "120 000 FCFA",
+      "meta": "Pack professionnel",
+      "cta": "Consulter l'offre",
+      "href": "tel:+2250141965069",
+      "image": "assets/ads/monitor-keyboard.jpg",
+      "imageAlt": "Kit ecran clavier et souris"
+    }
+  ]
+}

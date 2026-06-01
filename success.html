@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
+    <meta name="referrer" content="no-referrer">
+    <title>RICO'S WIFI ZONE - Connexion reussie</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body class="state-page" data-page="success" data-title-suffix="Connexion reussie">
+    <template id="hotspot-username">$(username)</template>
+    <div data-redirect-after="4000" data-redirect-url="./status.html" hidden></div>
+
+    <div class="site-shell">
+        <header class="topbar" aria-label="En-tete du portail">
+            <a class="brand" href="./login.html" aria-label="RICO'S WIFI ZONE">
+                <span class="brand-mark">
+                    <img src="assets/shield.svg" alt="">
+                </span>
+                <span>
+                    <strong>RICO'S WIFI ZONE</strong>
+                    <small>Connexion validee</small>
+                </span>
+            </a>
+            <a class="topbar-contact" href="tel:0141965069">Assistance</a>
+        </header>
+
+        <main class="state-panel">
+            <div class="state-header">
+                <span class="brand-mark">
+                    <img src="assets/shield.svg" alt="">
+                </span>
+                <div>
+                    <p class="eyebrow">Connexion reussie</p>
+                    $(if login-by == 'trial')
+                    <h1>Bienvenue</h1>
+                    <p class="state-lead">Votre acces invite est maintenant actif.</p>
+                    $(elif login-by != 'mac')
+                    <h1>Bienvenue, <span data-template-text="hotspot-username">client</span></h1>
+                    <p class="state-lead">Vous etes connecte au reseau RICO'S WIFI ZONE.</p>
+                    $(endif)
+                </div>
+            </div>
+
+            <div class="message-panel">
+                <p><strong>Connexion active.</strong> Vous allez etre redirige vers votre statut de session dans quelques secondes.</p>
+            </div>
+
+            <div class="state-actions">
+                <a class="btn-primary" href="./status.html">Voir le statut</a>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

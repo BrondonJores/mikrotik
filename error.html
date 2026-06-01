@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
+    <meta name="referrer" content="no-referrer">
+    <title>RICO'S WIFI ZONE - Erreur</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body class="state-page">
+    <template id="hotspot-error-detail">$(error)</template>
+
+    <div class="site-shell">
+        <header class="topbar" aria-label="En-tete du portail">
+            <a class="brand" href="$(link-login)" aria-label="RICO'S WIFI ZONE">
+                <span class="brand-mark">
+                    <img src="assets/shield.svg" alt="">
+                </span>
+                <span>
+                    <strong>RICO'S WIFI ZONE</strong>
+                    <small>Erreur de connexion</small>
+                </span>
+            </a>
+            <a class="topbar-contact" href="tel:0141965069">Assistance</a>
+        </header>
+
+        <main class="state-panel">
+            <div class="state-header">
+                <span class="brand-mark">
+                    <img src="assets/shield.svg" alt="">
+                </span>
+                <div>
+                    <p class="eyebrow">Connexion impossible</p>
+                    <h1>Une erreur est survenue</h1>
+                    <p class="state-lead">Votre demande n'a pas pu etre traitee correctement.</p>
+                </div>
+            </div>
+
+            <div class="message-panel">
+                <p><strong>Diagnostic:</strong> <span data-template-text="hotspot-error-detail">Erreur inconnue</span></p>
+            </div>
+
+            <div class="state-actions">
+                <a class="btn-primary" href="$(link-login)">Retour a la connexion</a>
+                <a class="btn-secondary" href="tel:0141965069">Contacter l'assistance</a>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

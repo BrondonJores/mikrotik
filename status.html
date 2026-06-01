@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
+    <meta name="referrer" content="no-referrer">
+    <title>RICO'S WIFI ZONE - Statut</title>
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body class="state-page" data-page="status" data-title-suffix="Statut" data-advert-pending="$(advert-pending)" data-link-advert="$(link-advert)" data-link-logout="$(link-logout)">
+    <template id="hotspot-username">$(username)</template>
+
+    <div class="site-shell">
+        <header class="topbar" aria-label="En-tete du portail">
+            <a class="brand" href="./login.html" aria-label="RICO'S WIFI ZONE">
+                <span class="brand-mark">
+                    <img src="assets/shield.svg" alt="">
+                </span>
+                <span>
+                    <strong>RICO'S WIFI ZONE</strong>
+                    <small>Session active</small>
+                </span>
+            </a>
+            <a class="topbar-contact" href="tel:0141965069">Assistance</a>
+        </header>
+
+        <main class="state-panel">
+            <div class="state-header">
+                <span class="brand-mark">
+                    <img src="assets/shield.svg" alt="">
+                </span>
+                <div>
+                    <p class="eyebrow">Bienvenue</p>
+                    <h1 id="user" data-template-text="hotspot-username">Utilisateur</h1>
+                    <p class="state-lead">Votre connexion est active. Les informations de session se mettent a jour automatiquement.</p>
+                </div>
+            </div>
+
+            <div class="session-list" aria-label="Informations de session">
+                <div class="session-row">
+                    <span>Adresse IP</span>
+                    <strong>$(ip)</strong>
+                </div>
+                <div class="session-row">
+                    <span>Adresse MAC</span>
+                    <strong>$(mac)</strong>
+                </div>
+                <div class="session-row">
+                    <span>Donnees envoyees</span>
+                    <strong>$(bytes-in-nice)</strong>
+                </div>
+                <div class="session-row">
+                    <span>Donnees recues</span>
+                    <strong>$(bytes-out-nice)</strong>
+                </div>
+                <div class="session-row">
+                    <span>Duree connectee</span>
+                    <strong>$(uptime)</strong>
+                </div>
+                <div class="session-row">
+                    <span>Volume restant</span>
+                    <strong>$(remain-bytes-total-nice)</strong>
+                </div>
+                <div class="session-row">
+                    <span>Temps restant</span>
+                    <strong>$(session-time-left)</strong>
+                </div>
+                <div class="session-row">
+                    <span>Actualisation</span>
+                    <strong>$(refresh-timeout)</strong>
+                </div>
+            </div>
+
+            <form action="$(link-logout)" name="logout" data-popup-logout>
+                <button class="btn-danger" type="submit">Se deconnecter</button>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>
