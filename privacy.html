@@ -4,50 +4,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
     <meta name="referrer" content="no-referrer">
-    <title>RICO'S WIFI ZONE - Confidentialite</title>
+    <title>BIYEM ASSI WIFI ZONE - Confidentialité</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="state-page">
-    <div class="site-shell">
-        <header class="topbar" aria-label="En-tete du portail">
-            <a class="brand" href="./login.html" aria-label="RICO'S WIFI ZONE">
-                <span class="brand-mark">
-                    <img src="assets/shield.svg" alt="">
-                </span>
-                <span>
-                    <strong>RICO'S WIFI ZONE</strong>
-                    <small>Confidentialite</small>
-                </span>
-            </a>
-            <a class="topbar-contact" href="tel:0141965069">Assistance</a>
-        </header>
+<body class="login-page state-page">
+    <div class="rw-shell">
 
-        <main class="state-panel">
-            <div class="state-header">
-                <span class="brand-mark">
+        <!-- ===== SIDEBAR GAUCHE : PRIVACY ===== -->
+        <aside class="rw-sidebar">
+            <a href="./login.html" class="rw-logo" style="text-decoration: none; color: inherit;">
+                <span class="rw-logo-mark">
                     <img src="assets/shield.svg" alt="">
                 </span>
                 <div>
-                    <p class="eyebrow">Confidentialite</p>
-                    <h1>Donnees du portail</h1>
-                    <p class="state-lead">Le portail reste statique et ne charge ni tracking tiers ni script externe.</p>
+                    <strong>BIYEM ASSI WIFI ZONE</strong>
+                    <small>Confidentialité</small>
+                </div>
+            </a>
+
+            <!-- Titre Section -->
+            <div class="rw-status-welcome">
+                <p class="eyebrow">Confidentialité</p>
+                <h2>Données du portail</h2>
+                <div class="rw-login-note">
+                    Le portail reste statique et ne charge aucun tracking tiers ni script externe.
                 </div>
             </div>
 
-            <div class="message-panel legal-panel">
-                <p><strong>Connexion.</strong> MikroTik peut traiter les donnees techniques necessaires a la session: identifiant, adresse IP, adresse MAC, volume et duree.</p>
-                <p><strong>Offres locales.</strong> Les annonces visibles sur ce portail sont configurees dans ads.json.</p>
-                <p><strong>Partage.</strong> Aucune dependance externe n'est ajoutee au portail refondu pour afficher la page de connexion.</p>
-                <p><strong>Assistance.</strong> Pour toute demande, contactez l'assistance au +225 01 41 96 50 69.</p>
+            <!-- Actions -->
+            <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+                <a class="rw-btn-connect" href="./login.html"
+                    onclick="if(history.length > 1){history.back();return false;}"
+                    style="display: flex; align-items: center; justify-content: center; background: var(--accent); box-shadow: var(--shadow-glow);">Retour</a>
+                <a class="rw-link-action rw-link-recover" href="./terms.html">Conditions</a>
             </div>
 
-            <div class="state-actions">
-                <a class="btn-primary" href="./login.html">Retour connexion</a>
-                <a class="btn-secondary" href="./terms.html">Conditions</a>
+            <!-- Contact -->
+            <div class="rw-contact-block" style="margin-top: 18px;">
+                <p class="rw-contact-title">Contactez nous :</p>
+                <p class="rw-contact-line">Tel : <a href="tel:+237655452342">+237 6 55 45 23 42</a></p>
+                <a class="rw-whatsapp-btn" href="https://wa.me/237655452342" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.868-1.424A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 0 1-4.078-1.125L4 20l1.125-3.922A7.946 7.946 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" />
+                    </svg>
+                    WhatsApp
+                </a>
             </div>
+
+            <!-- Footer sidebar -->
+            <nav class="rw-sidebar-footer" aria-label="Liens legaux">
+                <a href="./terms.html">Conditions</a>
+                <a href="./privacy.html">Confidentialite</a>
+            </nav>
+        </aside>
+
+        <!-- ===== CONTENU PRINCIPAL DROITE ===== -->
+        <main class="rw-main">
+
+            <!-- Ticker bienvenue -->
+            <div class="rw-ticker-bar">
+                <span class="rw-ticker-icon">&#128293;</span>
+                <div class="rw-ticker-track">
+                    <span class="rw-ticker-text">Bienvenue cher utilisateur &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp;
+                        BIYEM ASSI WIFI ZONE &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Connexion rapide et securisee
+                        &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Bienvenue cher utilisateur</span>
+                </div>
+            </div>
+
+            <!-- Contenu légal -->
+            <div class="rw-hero-block" style="flex: 1; display: flex; flex-direction: column; margin-bottom: 20px;">
+                <div class="rw-hero-title">
+                    <span class="rw-hero-icon">&#128220;</span>
+                    <span>Charte de Confidentialité</span>
+                </div>
+                <div class="rw-services-block"
+                    style="flex: 1; margin: 14px 0 0; padding: 24px; font-size: 14px; line-height: 1.6; display: flex; flex-direction: column; gap: 20px;">
+                    <p
+                        style="margin: 0; color: var(--white); font-weight: 700; font-size: 16px; border-bottom: 1px solid var(--line-strong); padding-bottom: 10px;">
+                        Traitement de vos données personnelles</p>
+
+                    <div>
+                        <strong
+                            style="color: var(--accent-glow); display: block; margin-bottom: 4px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">1.
+                            Connexion au réseau</strong>
+                        <span style="color: var(--muted);">MikroTik traite uniquement les données techniques strictement
+                            nécessaires à l'établissement et à la sécurité de votre session Wi-Fi : votre code de
+                            pass/identifiant, votre adresse IP, votre adresse MAC, le volume de données échangé et la
+                            durée de connexion.</span>
+                    </div>
+
+                    <div>
+                        <strong
+                            style="color: var(--accent-glow); display: block; margin-bottom: 4px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">2.
+                            Annonces et Contenus locaux</strong>
+                        <span style="color: var(--muted);">Les offres commerciales visibles sur le portail sont
+                            hébergées localement (configurées dans le fichier ads.json). Aucun contenu publicitaire
+                            n'est chargé depuis des serveurs externes.</span>
+                    </div>
+
+                    <div>
+                        <strong
+                            style="color: var(--accent-glow); display: block; margin-bottom: 4px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">3.
+                            Partage et Cookies</strong>
+                        <span style="color: var(--muted);">Aucune dépendance externe (Google Analytics, scripts de
+                            réseaux sociaux, etc.) n'est intégrée. Nous n'utilisons aucun cookie publicitaire ou traceur
+                            tiers sur ce portail.</span>
+                    </div>
+
+                    <div>
+                        <strong
+                            style="color: var(--accent-glow); display: block; margin-bottom: 4px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">4.
+                            Support et Assistance</strong>
+                        <span style="color: var(--muted);">Pour toute demande relative à vos données ou pour un
+                            dépannage, vous pouvez contacter notre assistance technique locale directement par téléphone
+                            au +237 6 55 45 23 42 ou via WhatsApp.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="rw-footer">
+                <span>Copyright &copy; 2023 BIYEM ASSI WIFI ZONE</span>
+                <nav>
+                    <a href="./terms.html">Conditions</a>
+                    <a href="./privacy.html">Confidentialite</a>
+                    <a href="tel:0141965069">Assistance</a>
+                </nav>
+            </footer>
         </main>
     </div>
 </body>

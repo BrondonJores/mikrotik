@@ -1,6 +1,6 @@
 # Securite, presentation SaaS statique et publicites
 
-Ce fichier transforme les recherches web en checklist applicable au portail RICO'S WIFI ZONE.
+Ce fichier transforme les recherches web en checklist applicable au portail BIYEM ASSI WIFI ZONE.
 Le projet reste statique et compatible MikroTik HotSpot, donc la strategie est de reduire les
 risques cote navigateur sans ajouter de services externes.
 
@@ -60,7 +60,7 @@ non conformes sont ignores ou remplaces par une valeur sure.
       "price": "500 FCFA",
       "meta": "3 jours / 72 heures",
       "cta": "Assistance",
-      "href": "tel:+2250141965069",
+      "href": "tel:+237655452342",
       "image": "assets/ads/offre-wifi.webp",
       "imageAlt": "Offre Wi-Fi RICO"
     }

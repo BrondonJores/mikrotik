@@ -4,12 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
     <meta name="referrer" content="no-referrer">
-    <title>RICO'S WIFI ZONE</title>
+    <title>BIYEM ASSI WIFI ZONE</title>
     <link rel="stylesheet" href="style.css">
     <script src="md5.js" defer></script>
+    <script src="jsqr.js" defer></script>
     <script src="app.js" defer></script>
+    <style>
+        .mm-inline-logos {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 8px;
+        }
+        .mm-inline-logos svg {
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+        }
+    </style>
 </head>
 
 <body class="login-page" data-page="login" data-title-suffix="Connexion">
@@ -30,21 +44,24 @@
 
         <!-- ===== SIDEBAR GAUCHE : LOGIN ===== -->
         <aside class="rw-sidebar">
-            <div class="rw-logo">
+            <a href="./login.html" class="rw-logo" style="text-decoration: none; color: inherit;">
                 <span class="rw-logo-mark">
                     <img src="assets/shield.svg" alt="">
                 </span>
                 <div>
-                    <strong>RICO'S WIFI ZONE</strong>
+                    <strong>BIYEM ASSI WIFI ZONE</strong>
                     <small>Hotspot Premium</small>
                 </div>
-            </div>
+            </a>
 
             <!-- Tabs Voucher / Connexion / QR Code -->
             <div class="rw-tabs" role="group" aria-label="Mode de connexion">
-                <button class="rw-tab is-active" type="button" data-login-mode="voucher" id="btn-voucher" aria-pressed="true">Voucher</button>
-                <button class="rw-tab" type="button" data-login-mode="member" id="btn-member" aria-pressed="false">Connexion</button>
-                <button class="rw-tab" type="button" id="btn-qr" aria-pressed="false">QR Code</button>
+                <button class="rw-tab is-active" type="button" data-login-mode="voucher" id="btn-voucher"
+                    aria-pressed="true">Voucher</button>
+                <button class="rw-tab" type="button" data-login-mode="member" id="btn-member"
+                    aria-pressed="false">Connexion</button>
+                <button class="rw-tab" type="button" data-login-mode="qr" id="btn-qr" aria-pressed="false">QR
+                    Code</button>
             </div>
 
             <!-- Formulaire de connexion -->
@@ -52,18 +69,46 @@
                 <input type="hidden" name="dst" value="$(link-orig)">
                 <input type="hidden" name="popup" value="true">
 
+                <!-- Zone Scanner QR Code -->
+                <div id="qr-scanner-container" class="is-hidden" style="margin-bottom: 14px;">
+                    <div class="rw-login-note" style="margin-bottom: 10px;">
+                        Positionnez le QR Code devant votre caméra.
+                    </div>
+                    <div id="qr-video-wrapper"
+                        style="position: relative; width: 100%; aspect-ratio: 4/3; border-radius: var(--radius-sm); overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(37,99,235,0.3);">
+                        <video id="qr-video" style="width: 100%; height: 100%; object-fit: cover;" playsinline></video>
+                        <canvas id="qr-canvas" style="display: none;"></canvas>
+                        <div id="qr-overlay"
+                            style="position: absolute; border: 2px dashed var(--accent-glow); width: 60%; height: 60%; pointer-events: none; border-radius: 8px; box-shadow: 0 0 0 9999px rgba(0,0,0,0.5);">
+                        </div>
+                        <button id="btn-start-qr" type="button" class="rw-btn-connect"
+                            style="position: absolute; padding: 10px 16px; font-size: 13px; font-weight: 900; background: var(--accent); box-shadow: var(--shadow-glow); text-transform: uppercase;">Activer
+                            la Caméra</button>
+                    </div>
+                    <div class="rw-login-note is-error is-hidden" id="qr-error" style="margin-top: 10px;"></div>
+                </div>
+
                 <label class="rw-field" for="username">
                     <span class="rw-field-label" id="username-label">Username</span>
-                    <input id="username" type="text" name="username" class="username-input rw-input" placeholder="Username" value="" required>
+                    <input id="username" type="text" name="username" class="username-input rw-input"
+                        placeholder="Username" value="" required>
                 </label>
 
                 <label class="rw-field" id="password-wrapper" for="password">
                     <span class="rw-field-label">Password</span>
                     <span class="rw-input-wrap">
-                        <input id="password" name="password" placeholder="Password" class="password-input rw-input" type="hidden">
+                        <input id="password" name="password" placeholder="Password" class="password-input rw-input"
+                            type="hidden">
                         <button class="rw-eye-btn" type="button" data-password-toggle aria-label="Afficher" hidden>
-                            <svg class="eye-open" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
-                            <svg class="eye-closed" viewBox="0 0 24 24"><path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a14.7 14.7 0 0 1-3 3.9M6.5 6.5C3.6 8.2 2 12 2 12s3.5 7 10 7c1.4 0 2.7-.3 3.8-.8"/></svg>
+                            <svg class="eye-open" viewBox="0 0 24 24">
+                                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <svg class="eye-closed" viewBox="0 0 24 24">
+                                <path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8" />
+                                <path
+                                    d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a14.7 14.7 0 0 1-3 3.9M6.5 6.5C3.6 8.2 2 12 2 12s3.5 7 10 7c1.4 0 2.7-.3 3.8-.8" />
+                            </svg>
                         </button>
                     </span>
                 </label>
@@ -77,16 +122,23 @@
 
             <!-- Actions secondaires -->
             <div class="rw-sidebar-actions">
-                <a class="rw-link-action rw-link-ticket" href="#">Cliquer ici pour obtenir un Ticket</a>
-                <a class="rw-link-action rw-link-recover" href="#">Recuperer mes Identifiants</a>
+                <a class="rw-link-action rw-link-ticket" href="https://wa.me/237655452342" target="_blank"
+                    rel="noopener noreferrer">Cliquer ici pour obtenir un Ticket</a>
+                <a class="rw-link-action rw-link-recover" href="https://wa.me/237655452342" target="_blank"
+                    rel="noopener noreferrer">Recuperer mes Identifiants</a>
             </div>
 
             <!-- Contact -->
             <div class="rw-contact-block">
                 <p class="rw-contact-title">Contactez nous :</p>
-                <p class="rw-contact-line">Tel : <a href="tel:+2250141965069">+225 01 41 96 50 69</a></p>
-                <a class="rw-whatsapp-btn" href="https://wa.me/2250141965069" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.868-1.424A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 0 1-4.078-1.125L4 20l1.125-3.922A7.946 7.946 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+                <p class="rw-contact-line">Tel : <a href="tel:+237655452342">+237 6 55 45 23 42</a></p>
+                <a class="rw-whatsapp-btn" href="https://wa.me/237655452342" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.868-1.424A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 0 1-4.078-1.125L4 20l1.125-3.922A7.946 7.946 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" />
+                    </svg>
                     WhatsApp
                 </a>
             </div>
@@ -105,7 +157,9 @@
             <div class="rw-ticker-bar">
                 <span class="rw-ticker-icon">&#128293;</span>
                 <div class="rw-ticker-track">
-                    <span class="rw-ticker-text">Bienvenue cher utilisateur &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; RICO'S WIFI ZONE &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Connexion rapide et securisee &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Bienvenue cher utilisateur</span>
+                    <span class="rw-ticker-text">Bienvenue cher utilisateur &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp;
+                        BIYEM ASSI WIFI ZONE &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Connexion rapide et securisee
+                        &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Bienvenue cher utilisateur</span>
                 </div>
             </div>
 
@@ -117,24 +171,38 @@
                 </div>
                 <div class="rw-video-area" id="rw-video-area">
                     <div class="rw-video-placeholder">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none" />
+                        </svg>
                         <span>Aucune video disponible</span>
                     </div>
                     <div class="rw-video-bar">
                         <button class="rw-vid-btn" type="button" aria-label="Lecture">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
                         </button>
                         <span class="rw-vid-time">0:00</span>
-                        <div class="rw-vid-progress"><div class="rw-vid-cursor"></div></div>
+                        <div class="rw-vid-progress">
+                            <div class="rw-vid-cursor"></div>
+                        </div>
                         <button class="rw-vid-btn" type="button" aria-label="Volume">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                            </svg>
                         </button>
                         <button class="rw-vid-btn" type="button" aria-label="Plein ecran">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                            </svg>
                         </button>
                     </div>
                 </div>
-                <a class="rw-ticket-cta" href="#">Recuperer Mon Ticket</a>
+                <a class="rw-ticket-cta" href="https://wa.me/237655452342" target="_blank"
+                    rel="noopener noreferrer">Recuperer Mon Ticket</a>
             </div>
 
             <!-- Separator forfaits -->
@@ -145,25 +213,40 @@
             <!-- Grille des forfaits -->
             <div class="rw-plans-grid" id="plans">
                 <article class="rw-plan-card" data-theme="blue">
-                    <h3 class="rw-plan-name">6 GB</h3>
+                    <h3 class="rw-plan-name">2 GB</h3>
                     <div class="rw-plan-wifi">
                         <div class="rw-wifi-anim">
                             <span></span><span></span><span></span><span></span>
                         </div>
                     </div>
                     <div class="rw-plan-price">
-                        <span class="rw-plan-amount">500</span>
+                        <span class="rw-plan-amount">100</span>
                         <sup class="rw-plan-currency">Fcfa</sup>
                     </div>
                     <div class="rw-plan-divider"></div>
-                    <p class="rw-plan-validity">Valides 7 Jours</p>
+                    <p class="rw-plan-validity">Valides 24 heures</p>
                     <div class="rw-plan-divider"></div>
-                    <p class="rw-plan-users">2 Utilisateurs</p>
-                    <button class="rw-plan-btn" type="button" onclick="window.voucher && window.voucher()">PAYER</button>
+                    <p class="rw-plan-users">1 Utilisateur</p>
+                    <button class="rw-plan-btn" type="button" style="display:flex; align-items:center; justify-content:center;"
+                        onclick="acheterForfait('2GB_PROFILE', 100)">
+                        PAYER
+                        <span class="mm-inline-logos">
+                            <!-- Logo MTN -->
+                            <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100" height="100" rx="20" fill="#FFCC00"/>
+                                <text x="50%" y="65%" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="34" fill="#000000" text-anchor="middle">MTN</text>
+                            </svg>
+                            <!-- Logo Orange -->
+                            <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100" height="100" fill="#FF6600"/>
+                                <text x="50%" y="62%" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="28" fill="white" text-anchor="middle">orange</text>
+                            </svg>
+                        </span>
+                    </button>
                 </article>
 
                 <article class="rw-plan-card" data-theme="blue">
-                    <h3 class="rw-plan-name">Jour Illimitees</h3>
+                    <h3 class="rw-plan-name">Jour Illimité</h3>
                     <div class="rw-plan-wifi">
                         <div class="rw-wifi-anim">
                             <span></span><span></span><span></span><span></span>
@@ -176,12 +259,27 @@
                     <div class="rw-plan-divider"></div>
                     <p class="rw-plan-validity">Valides 1 Jour</p>
                     <div class="rw-plan-divider"></div>
-                    <p class="rw-plan-users">1 Utilisateurs</p>
-                    <button class="rw-plan-btn" type="button" onclick="window.voucher && window.voucher()">PAYER</button>
+                    <p class="rw-plan-users">1 Utilisateur</p>
+                    <button class="rw-plan-btn" type="button" style="display:flex; align-items:center; justify-content:center;"
+                        onclick="acheterForfait('1DAY_PROFILE', 500)">
+                        PAYER
+                        <span class="mm-inline-logos">
+                            <!-- Logo MTN -->
+                            <svg width="22" height="22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100" height="100" rx="20" fill="#FFCC00"/>
+                                <text x="50%" y="65%" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="34" fill="#000000" text-anchor="middle">MTN</text>
+                            </svg>
+                            <!-- Logo Orange -->
+                            <svg width="22" height="22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100" height="100" fill="#FF6600"/>
+                                <text x="50%" y="62%" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="28" fill="white" text-anchor="middle">orange</text>
+                            </svg>
+                        </span>
+                    </button>
                 </article>
 
                 <article class="rw-plan-card" data-theme="dark">
-                    <h3 class="rw-plan-name">Semaine Illimitees</h3>
+                    <h3 class="rw-plan-name">Semaine Illimitée</h3>
                     <div class="rw-plan-wifi">
                         <div class="rw-wifi-anim">
                             <span></span><span></span><span></span><span></span>
@@ -194,12 +292,19 @@
                     <div class="rw-plan-divider"></div>
                     <p class="rw-plan-validity">Valides 7 Jours</p>
                     <div class="rw-plan-divider"></div>
-                    <p class="rw-plan-users">1 Utilisateurs</p>
-                    <button class="rw-plan-btn" type="button" onclick="window.voucher && window.voucher()">PAYER</button>
+                    <p class="rw-plan-users">1 Utilisateur</p>
+                    <button class="rw-plan-btn mm-btn" type="button"
+                        onclick="acheterForfait('1WEEK_PROFILE', 2000)">
+                        <span>PAYER</span>
+                        <div class="mm-logos">
+                            <span class="mm-logo-mtn">MTN</span>
+                            <span class="mm-logo-orange">Orange</span>
+                        </div>
+                    </button>
                 </article>
 
                 <article class="rw-plan-card" data-theme="dark">
-                    <h3 class="rw-plan-name">Mois Illimite</h3>
+                    <h3 class="rw-plan-name">Mois Illimité</h3>
                     <div class="rw-plan-wifi">
                         <div class="rw-wifi-anim">
                             <span></span><span></span><span></span><span></span>
@@ -212,8 +317,15 @@
                     <div class="rw-plan-divider"></div>
                     <p class="rw-plan-validity">Valides 30 Jours</p>
                     <div class="rw-plan-divider"></div>
-                    <p class="rw-plan-users">1 Utilisateurs</p>
-                    <button class="rw-plan-btn" type="button" onclick="window.voucher && window.voucher()">PAYER</button>
+                    <p class="rw-plan-users">1 Utilisateur</p>
+                    <button class="rw-plan-btn mm-btn" type="button"
+                        onclick="acheterForfait('1MONTH_PROFILE', 5000)">
+                        <span>PAYER</span>
+                        <div class="mm-logos">
+                            <span class="mm-logo-mtn">MTN</span>
+                            <span class="mm-logo-orange">Orange</span>
+                        </div>
+                    </button>
                 </article>
             </div>
 
@@ -234,7 +346,7 @@
 
             <!-- Footer -->
             <footer class="rw-footer">
-                <span>Copyright &copy; 2023 RICO'S WIFI ZONE</span>
+                <span>Copyright &copy; 2023 BIYEM ASSI WIFI ZONE</span>
                 <nav>
                     <a href="./terms.html">Conditions</a>
                     <a href="./privacy.html">Confidentialite</a>
@@ -243,5 +355,85 @@
             </footer>
         </main>
     </div>
+
+    <!-- Script de Paiement Mobile Money SaaS -->
+    <script>
+        // -- 1. AUTO-LOGIN POST PAIEMENT --
+        // Vérifier si Monetbil nous a redirigé ici avec une référence de paiement
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentRef = urlParams.get('ref');
+
+        if (paymentRef) {
+            // Afficher une alerte ou un overlay pour informer le client
+            document.getElementById('infologin').innerHTML = `<strong>Vérification du paiement en cours... Ne quittez pas la page.</strong>`;
+            
+            // Poller notre backend VPS pour voir si le paiement est bien SUCCESS et récupérer le voucher
+            const checkStatusInterval = setInterval(() => {
+                fetch(`http://164.90.214.219:3000/api/payments/status/${paymentRef}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success && data.status === 'SUCCESS' && data.voucherCode) {
+                        clearInterval(checkStatusInterval);
+                        document.getElementById('infologin').innerHTML = `<strong style="color:green;">Paiement réussi ! Connexion automatique...</strong>`;
+                        
+                        // Injecter le code dans le formulaire Mikrotik et soumettre
+                        document.getElementById('username').value = data.voucherCode;
+                        document.getElementById('password').value = data.voucherCode; // Souvent le même pour les vouchers
+                        
+                        setTimeout(() => {
+                            document.forms['login'].submit();
+                        }, 1000);
+                    } else if (data.status === 'FAILED' || data.status === 'CANCELLED') {
+                        clearInterval(checkStatusInterval);
+                        alert("Le paiement a échoué ou a été annulé.");
+                        window.location.href = window.location.pathname; // Nettoyer l'URL
+                    }
+                })
+                .catch(err => console.error("Erreur check status", err));
+            }, 3000); // Check toutes les 3 secondes
+        }
+
+        // -- 2. INITIER UN PAIEMENT --
+        function acheterForfait(profileName, price) {
+            // IDs réels fournis depuis le Dashboard
+            const routerId = "6d8acb68-46e4-47af-b01c-76be258aaa86"; 
+            const tariffId = "b13cc26d-029c-47e3-9cd8-ff484ee88054"; 
+            
+            const phone = prompt("Entrez votre numéro Mobile Money (ex: 655452342) pour payer " + price + " FCFA :");
+            if (!phone) return;
+
+            alert("Création du paiement sécurisé en cours... Veuillez patienter.");
+
+            const returnUrl = window.location.origin + window.location.pathname;
+
+            // Appel vers notre API SaaS Backend sur Digital Ocean
+            fetch("http://164.90.214.219:3000/api/payments/initiate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    routerId: routerId,
+                    tariffId: tariffId,
+                    phoneNumber: phone,
+                    returnUrl: returnUrl
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success && data.paymentUrl) {
+                    // Redirection vers le guichet Monetbil
+                    window.location.href = data.paymentUrl;
+                } else {
+                    alert("Erreur: " + data.error);
+                }
+            })
+            .catch(err => {
+                alert("Erreur de connexion au serveur de paiement.");
+                console.error(err);
+            });
+        }
+    </script>
 </body>
+
 </html>

@@ -18,7 +18,7 @@ meilleur branding et experience plus moderne.
 
 ## Problemes actuels
 
-- Le branding est incoherent: `RICO'S WIFI ZONE`, `BABA-IMANE`, `vue.net` et anciens
+- Le branding est incoherent: `BIYEM ASSI WIFI ZONE`, `BABA-IMANE`, `vue.net` et anciens
   textes indonesiens coexistent dans plusieurs pages.
 - Plusieurs textes sont mal encodes dans les sources, par exemple les accents et icones
   apparaissent comme caracteres casses.

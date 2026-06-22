@@ -38,7 +38,7 @@ Passe JSON + UI premium appliquee:
 ## Phase 1 - Nettoyage du socle
 
 - Convertir les pages en UTF-8 propre et corriger les textes casses.
-- Centraliser le nom de marque: `RICO'S WIFI ZONE`.
+- Centraliser le nom de marque: `BIYEM ASSI WIFI ZONE`.
 - Supprimer les anciens textes hors marque: `BABA-IMANE`, `vue.net`, textes indonesiens.
 - Retirer ou isoler les scripts inutilises (`service.js`, dependances Vue si non utilisees).
 - Verifier que les variables MikroTik restent intactes.

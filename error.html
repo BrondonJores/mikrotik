@@ -4,52 +4,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
     <meta name="referrer" content="no-referrer">
-    <title>RICO'S WIFI ZONE - Erreur</title>
+    <title>BIYEM ASSI WIFI ZONE - Erreur</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="expires" content="-1">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
 
-<body class="state-page">
+<body class="login-page state-page" data-page="error">
     <template id="hotspot-error-detail">$(error)</template>
 
-    <div class="site-shell">
-        <header class="topbar" aria-label="En-tete du portail">
-            <a class="brand" href="$(link-login)" aria-label="RICO'S WIFI ZONE">
-                <span class="brand-mark">
-                    <img src="assets/shield.svg" alt="">
-                </span>
-                <span>
-                    <strong>RICO'S WIFI ZONE</strong>
-                    <small>Erreur de connexion</small>
-                </span>
-            </a>
-            <a class="topbar-contact" href="tel:0141965069">Assistance</a>
-        </header>
+    <div class="rw-shell">
 
-        <main class="state-panel">
-            <div class="state-header">
-                <span class="brand-mark">
+        <!-- ===== SIDEBAR GAUCHE : ERREUR ===== -->
+        <aside class="rw-sidebar">
+            <a href="./login.html" class="rw-logo" style="text-decoration: none; color: inherit;">
+                <span class="rw-logo-mark">
                     <img src="assets/shield.svg" alt="">
                 </span>
                 <div>
-                    <p class="eyebrow">Connexion impossible</p>
-                    <h1>Une erreur est survenue</h1>
-                    <p class="state-lead">Votre demande n'a pas pu etre traitee correctement.</p>
+                    <strong>BIYEM ASSI WIFI ZONE</strong>
+                    <small>Erreur de connexion</small>
+                </div>
+            </a>
+
+            <!-- Message d'erreur -->
+            <div class="rw-status-welcome">
+                <p class="eyebrow" style="color: var(--danger);">Connexion impossible</p>
+                <h2>Une erreur est survenue</h2>
+                <div class="rw-login-note is-error">
+                    <strong>Diagnostic :</strong> <span data-template-text="hotspot-error-detail">Erreur inconnue</span>
                 </div>
             </div>
 
-            <div class="message-panel">
-                <p><strong>Diagnostic:</strong> <span data-template-text="hotspot-error-detail">Erreur inconnue</span></p>
+            <div style="margin-bottom: 20px;">
+                <a class="rw-btn-connect" href="$(link-login)"
+                    style="display: flex; align-items: center; justify-content: center; background: var(--accent); box-shadow: var(--shadow-glow);">Retour
+                    à la connexion</a>
             </div>
 
-            <div class="state-actions">
-                <a class="btn-primary" href="$(link-login)">Retour a la connexion</a>
-                <a class="btn-secondary" href="tel:0141965069">Contacter l'assistance</a>
+            <!-- Contact -->
+            <div class="rw-contact-block" style="margin-top: 18px;">
+                <p class="rw-contact-title">Contactez nous :</p>
+                <p class="rw-contact-line">Tel : <a href="tel:+237655452342">+237 6 55 45 23 42</a></p>
+                <a class="rw-whatsapp-btn" href="https://wa.me/237655452342" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.868-1.424A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 0 1-4.078-1.125L4 20l1.125-3.922A7.946 7.946 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" />
+                    </svg>
+                    WhatsApp
+                </a>
             </div>
+
+            <!-- Footer sidebar -->
+            <nav class="rw-sidebar-footer" aria-label="Liens legaux">
+                <a href="./terms.html">Conditions</a>
+                <a href="./privacy.html">Confidentialite</a>
+            </nav>
+        </aside>
+
+        <!-- ===== CONTENU PRINCIPAL DROITE ===== -->
+        <main class="rw-main">
+
+            <!-- Ticker bienvenue -->
+            <div class="rw-ticker-bar">
+                <span class="rw-ticker-icon">&#128293;</span>
+                <div class="rw-ticker-track">
+                    <span class="rw-ticker-text">Bienvenue cher utilisateur &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp;
+                        BIYEM ASSI WIFI ZONE &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Connexion rapide et securisee
+                        &nbsp;&nbsp;&nbsp; — &nbsp;&nbsp;&nbsp; Bienvenue cher utilisateur</span>
+                </div>
+            </div>
+
+            <!-- Zone video / banniere -->
+            <div class="rw-hero-block">
+                <div class="rw-hero-title">
+                    <span class="rw-hero-icon">&#128640;</span>
+                    <span>Une erreur est survenue</span>
+                </div>
+                <div class="rw-video-area" id="rw-video-area">
+                    <div class="rw-video-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none" />
+                        </svg>
+                        <span>Aucune video disponible</span>
+                    </div>
+                    <div class="rw-video-bar">
+                        <button class="rw-vid-btn" type="button" aria-label="Lecture">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                        </button>
+                        <span class="rw-vid-time">0:00</span>
+                        <div class="rw-vid-progress">
+                            <div class="rw-vid-cursor"></div>
+                        </div>
+                        <button class="rw-vid-btn" type="button" aria-label="Volume">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                            </svg>
+                        </button>
+                        <button class="rw-vid-btn" type="button" aria-label="Plein ecran">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Separator forfaits -->
+            <div class="rw-plans-header">
+                <span>"Nos Forfaits (Cliquer pour Souscrire)"</span>
+            </div>
+
+            <!-- Grille des forfaits -->
+            <div class="rw-plans-grid" id="plans">
+                <article class="rw-plan-card" data-theme="blue">
+                    <h3 class="rw-plan-name">6 GB</h3>
+                    <div class="rw-plan-wifi">
+                        <div class="rw-wifi-anim">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="rw-plan-price">
+                        <span class="rw-plan-amount">500</span>
+                        <sup class="rw-plan-currency">Fcfa</sup>
+                    </div>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-validity">Valides 7 Jours</p>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-users">2 Utilisateurs</p>
+                    <button class="rw-plan-btn" type="button"
+                        onclick="window.location.href='./login.html'">PAYER</button>
+                </article>
+
+                <article class="rw-plan-card" data-theme="blue">
+                    <h3 class="rw-plan-name">Jour Illimitees</h3>
+                    <div class="rw-plan-wifi">
+                        <div class="rw-wifi-anim">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="rw-plan-price">
+                        <span class="rw-plan-amount">500</span>
+                        <sup class="rw-plan-currency">Fcfa</sup>
+                    </div>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-validity">Valides 1 Jour</p>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-users">1 Utilisateurs</p>
+                    <button class="rw-plan-btn" type="button"
+                        onclick="window.location.href='./login.html'">PAYER</button>
+                </article>
+
+                <article class="rw-plan-card" data-theme="dark">
+                    <h3 class="rw-plan-name">Semaine Illimitees</h3>
+                    <div class="rw-plan-wifi">
+                        <div class="rw-wifi-anim">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="rw-plan-price">
+                        <span class="rw-plan-amount">2.000</span>
+                        <sup class="rw-plan-currency">Fcfa</sup>
+                    </div>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-validity">Valides 7 Jours</p>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-users">1 Utilisateurs</p>
+                    <button class="rw-plan-btn" type="button"
+                        onclick="window.location.href='./login.html'">PAYER</button>
+                </article>
+
+                <article class="rw-plan-card" data-theme="dark">
+                    <h3 class="rw-plan-name">Mois Illimite</h3>
+                    <div class="rw-plan-wifi">
+                        <div class="rw-wifi-anim">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="rw-plan-price">
+                        <span class="rw-plan-amount">5.000</span>
+                        <sup class="rw-plan-currency">Fcfa</sup>
+                    </div>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-validity">Valides 30 Jours</p>
+                    <div class="rw-plan-divider"></div>
+                    <p class="rw-plan-users">1 Utilisateurs</p>
+                    <button class="rw-plan-btn" type="button"
+                        onclick="window.location.href='./login.html'">PAYER</button>
+                </article>
+            </div>
+
+            <!-- Cliquer ici pour plus de forfaits -->
+            <div class="rw-more-plans">
+                <a href="#plans">"Cliquez ici Pour plus de Forfaits"</a>
+            </div>
+
+            <!-- Nos services -->
+            <div class="rw-services-block">
+                <h4 class="rw-services-title">Nos services</h4>
+                <ul class="rw-services-list">
+                    <li>Installation Internet a Domicile</li>
+                    <li>Prestation de Services Informatiques</li>
+                    <li>Cablage Reseau</li>
+                </ul>
+            </div>
+
+            <!-- Footer -->
+            <footer class="rw-footer">
+                <span>Copyright &copy; 2023 BIYEM ASSI WIFI ZONE</span>
+                <nav>
+                    <a href="./terms.html">Conditions</a>
+                    <a href="./privacy.html">Confidentialite</a>
+                    <a href="tel:0141965069">Assistance</a>
+                </nav>
+            </footer>
         </main>
     </div>
 </body>

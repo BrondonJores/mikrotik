@@ -1,4 +1,4 @@
-# RICO'S WIFI ZONE - Portail Hotspot MikroTik
+# BIYEM ASSI WIFI ZONE - Portail Hotspot MikroTik
 
 Ce projet est un portail captif MikroTik pour la connexion par ticket ou compte membre.
 Il contient les pages HTML attendues par RouterOS Hotspot, les styles, les scripts de
@@ -17,7 +17,7 @@ connexion CHAP/MD5, et un ancien module de slideshow publicitaire.
 
 Transformer le portail en interface professionnelle, moderne et commerciale:
 
-- Branding plus fort et coherent pour RICO'S WIFI ZONE
+- Branding plus fort et coherent pour BIYEM ASSI WIFI ZONE
 - Layout plus premium avec espace publicitaire / slideshow
 - Parcours de connexion clair: Ticket et Membre
 - Tarifs lisibles et faciles a modifier

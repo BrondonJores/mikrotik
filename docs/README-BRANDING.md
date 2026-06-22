@@ -2,7 +2,7 @@
 
 ## Marque cible
 
-Nom principal: `RICO'S WIFI ZONE`
+Nom principal: `BIYEM ASSI WIFI ZONE`
 
 Positionnement recommande:
 
@@ -25,7 +25,7 @@ Court, direct, rassurant:
 
 Remplacer dans tout le projet:
 
-- `BABA-IMANE` par `RICO'S WIFI ZONE`
+- `BABA-IMANE` par `BIYEM ASSI WIFI ZONE`
 - `vue.net` par le nom reel du reseau ou de la marque
 - textes indonesiens par textes francais
 - `Logout`, `Login`, `Check Status` par equivalents francais coherents
@@ -47,7 +47,7 @@ Slides recommandees:
 1. Promo principale: `Internet rapide pour tous vos appareils`
 2. Offre tickets: `A partir de 500 FCFA`
 3. Offre longue duree: `30 jours de connexion a 3 000 FCFA`
-4. Assistance: `Support disponible au +225 01 41 96 50 69`
+4. Assistance: `Support disponible au +237 6 55 45 23 42`
 
 Chaque slide doit avoir:
 

@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    var SITE_NAME = "RICO'S WIFI ZONE";
+    var SITE_NAME = "BIYEM ASSI WIFI ZONE";
 
     function query(selector, root) {
         return (root || document).querySelector(selector);
@@ -127,6 +127,120 @@
         var passwordToggle = query("[data-password-toggle]");
         var passwordVisible = false;
 
+        var qrStream = null;
+        var qrAnimationId = null;
+
+        function startQrScanner() {
+            var video = document.getElementById("qr-video");
+            var canvas = document.getElementById("qr-canvas");
+            var btnStart = document.getElementById("btn-start-qr");
+            var qrError = document.getElementById("qr-error");
+
+            if (!video || !canvas || !btnStart) return;
+
+            if (qrError) {
+                qrError.classList.add("is-hidden");
+                qrError.textContent = "";
+            }
+
+            btnStart.classList.add("is-hidden");
+
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+                .then(function (stream) {
+                    qrStream = stream;
+                    video.srcObject = stream;
+                    video.setAttribute("playsinline", true);
+                    video.play();
+                    qrAnimationId = requestAnimationFrame(tickQrScan);
+                })
+                .catch(function (err) {
+                    btnStart.classList.remove("is-hidden");
+                    if (qrError) {
+                        qrError.textContent = "Impossible d'accéder à la caméra : " + (err.message || err);
+                        qrError.classList.remove("is-hidden");
+                    }
+                });
+        }
+
+        function stopQrScanner() {
+            var video = document.getElementById("qr-video");
+            var btnStart = document.getElementById("btn-start-qr");
+
+            if (qrStream) {
+                qrStream.getTracks().forEach(function (track) {
+                    track.stop();
+                });
+                qrStream = null;
+            }
+
+            if (video) {
+                video.srcObject = null;
+            }
+
+            if (qrAnimationId) {
+                cancelAnimationFrame(qrAnimationId);
+                qrAnimationId = null;
+            }
+
+            if (btnStart) {
+                btnStart.classList.remove("is-hidden");
+            }
+        }
+
+        function tickQrScan() {
+            var video = document.getElementById("qr-video");
+            var canvas = document.getElementById("qr-canvas");
+            if (!video || !canvas) return;
+
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                var ctx = canvas.getContext("2d", { willReadFrequently: true });
+                canvas.height = video.videoHeight;
+                canvas.width = video.videoWidth;
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var code = window.jsQR ? window.jsQR(imageData.data, imageData.width, imageData.height, {
+                    inversionAttempts: "dontInvert",
+                }) : null;
+
+                if (code && code.data) {
+                    var scannedValue = code.data.trim();
+                    var codeValue = scannedValue;
+
+                    if (/^https?:\/\//i.test(scannedValue)) {
+                        try {
+                            var url = new URL(scannedValue);
+                            codeValue = url.searchParams.get("username") || url.searchParams.get("voucher") || scannedValue;
+                        } catch (e) { }
+                    }
+
+                    if (codeValue) {
+                        stopQrScanner();
+                        if (usernameField && loginForm) {
+                            usernameField.value = codeValue;
+                            syncVoucherPassword();
+
+                            var qrContainer = document.getElementById("qr-scanner-container");
+                            if (qrContainer) {
+                                var note = qrContainer.querySelector(".rw-login-note");
+                                if (note) {
+                                    note.innerHTML = "Code détecté : <strong style='color: var(--success);'>" + codeValue + "</strong>. Connexion en cours...";
+                                }
+                            }
+
+                            setTimeout(function () {
+                                loginForm.submit();
+                            }, 1000);
+                        }
+                        return;
+                    }
+                }
+            }
+            if (qrStream) {
+                qrAnimationId = requestAnimationFrame(tickQrScan);
+            }
+        }
+
         function syncVoucherPassword() {
             if (passwordField && passwordField.type === "hidden") {
                 passwordField.value = usernameField ? usernameField.value : "";
@@ -135,6 +249,7 @@
 
         function activateMode(mode, shouldFocus) {
             var isVoucher = mode === "voucher";
+            var isQr = mode === "qr";
             passwordVisible = false;
 
             queryAll("[data-login-mode]").forEach(function (button) {
@@ -143,36 +258,65 @@
                 button.setAttribute("aria-pressed", active ? "true" : "false");
             });
 
-            if (usernameLabel) {
-                usernameLabel.textContent = isVoucher ? "Code du pass" : "Nom d'utilisateur";
+            var qrContainer = document.getElementById("qr-scanner-container");
+            var usernameFieldWrapper = usernameField ? usernameField.closest(".rw-field") : null;
+            var submitBtn = loginForm ? loginForm.querySelector(".rw-btn-connect") : null;
+
+            if (qrContainer) {
+                qrContainer.classList.toggle("is-hidden", !isQr);
+            }
+            if (usernameFieldWrapper) {
+                usernameFieldWrapper.classList.toggle("is-hidden", isQr);
+            }
+            if (submitBtn) {
+                submitBtn.classList.toggle("is-hidden", isQr);
+            }
+            if (infoLogin) {
+                infoLogin.classList.toggle("is-hidden", isQr);
             }
 
-            if (usernameField) {
-                usernameField.placeholder = isVoucher ? "Code du pass" : "Votre identifiant";
-                if (shouldFocus) {
-                    usernameField.focus();
+            if (isQr) {
+                if (passwordWrapper) passwordWrapper.classList.add("is-hidden");
+                if (passwordField) {
+                    passwordField.type = "hidden";
+                    passwordField.required = false;
                 }
+                stopQrScanner();
+                setTimeout(startQrScanner, 100);
+            } else {
+                stopQrScanner();
+
+                if (usernameLabel) {
+                    usernameLabel.textContent = isVoucher ? "Code du pass" : "Nom d'utilisateur";
+                }
+
+                if (usernameField) {
+                    usernameField.placeholder = isVoucher ? "Code du pass" : "Votre identifiant";
+                    if (shouldFocus) {
+                        usernameField.focus();
+                    }
+                }
+
+                if (passwordWrapper && passwordField) {
+                    passwordWrapper.classList.toggle("is-hidden", isVoucher);
+                    passwordField.type = isVoucher ? "hidden" : "password";
+                    passwordField.required = !isVoucher;
+
+                    if (passwordToggle) {
+                        passwordToggle.hidden = isVoucher;
+                        passwordToggle.classList.remove("is-visible");
+                        passwordToggle.setAttribute("aria-label", "Afficher le mot de passe");
+                    }
+
+                    if (isVoucher) {
+                        syncVoucherPassword();
+                    } else {
+                        passwordField.value = "";
+                    }
+                }
+
+                setLoginNote(infoLogin, isVoucher, false);
             }
-
-            if (passwordWrapper && passwordField) {
-                passwordWrapper.classList.toggle("is-hidden", isVoucher);
-                passwordField.type = isVoucher ? "hidden" : "password";
-                passwordField.required = !isVoucher;
-
-                if (passwordToggle) {
-                    passwordToggle.hidden = isVoucher;
-                    passwordToggle.classList.remove("is-visible");
-                    passwordToggle.setAttribute("aria-label", "Afficher le mot de passe");
-                }
-
-                if (isVoucher) {
-                    syncVoucherPassword();
-                } else {
-                    passwordField.value = "";
-                }
-            }
-
-            setLoginNote(infoLogin, isVoucher, false);
         }
 
         queryAll("[data-login-mode]").forEach(function (button) {
@@ -205,6 +349,11 @@
             });
         }
 
+        var btnStartQr = document.getElementById("btn-start-qr");
+        if (btnStartQr) {
+            btnStartQr.addEventListener("click", startQrScanner);
+        }
+
         loginForm.addEventListener("submit", function (event) {
             syncVoucherPassword();
 
@@ -229,6 +378,29 @@
         });
 
         activateMode("voucher", false);
+
+        // Auto-connexion via paramètres URL (ex: ?username=CODE ou ?voucher=CODE)
+        function getQueryParam(name) {
+            var query = window.location.search.substring(1);
+            if (!query) return null;
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (decodeURIComponent(pair[0]) === name) {
+                    return decodeURIComponent(pair[1]);
+                }
+            }
+            return null;
+        }
+
+        var urlUsername = getQueryParam("username") || getQueryParam("voucher");
+        if (urlUsername && usernameField && loginForm) {
+            usernameField.value = urlUsername.trim();
+            syncVoucherPassword();
+            setTimeout(function () {
+                loginForm.submit();
+            }, 600);
+        }
     }
 
     function isAllowedAdImage(src) {
